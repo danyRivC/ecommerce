@@ -1,0 +1,26 @@
+{% if request.user.is_authenticated %}
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Compusur</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="{% url "home_product"%}">Productos</a>
+    <a class="p-2 text-dark" href="#">Contactenos</a>
+    Hola {{request.user.first_name}}
+    <a class="far fa-user-circle" href="{% url "signup" %}"></a>
+
+    <a class="fas fa-sign-out-alt" href="{% url "logout" %}"></a>
+  </nav>
+
+</div>
+{% else %}
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Compusur</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="{% url "home_product"%}" style="font-size:120%;">Productos</a>
+    <a class="p-2 text-dark" href="#">Contactenos</a>
+
+    <a class="btn btn-outline-primary" href="{% url "signup" %}">Registrarse</a>
+    <a class="btn btn-outline-success" href="{% url "login" %}">Iniciar Sesión</a>
+  </nav>
+
+</div>
+{% endif%}
