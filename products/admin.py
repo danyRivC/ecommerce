@@ -1,9 +1,8 @@
 from django.contrib import admin
 from products.models import Product, ProductImage, ProductCategory
 
-@admin.register(Product,ProductCategory,ProductImage)
-class ProductImageInLine(admin.ModelAdmin):
-    """docstring for ProductImageInLine."""
+
+class ProductImageInLine(admin.TabularInline):
     model = ProductImage
 class ProductAdmin(admin.ModelAdmin):
     """docstring for ProductAdmin."""
@@ -11,5 +10,14 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [
         ProductImageInLine
     ]
-    list_display = ('pk', 'title', 'price')
-    list_editable = ('title', 'price')
+    list_display = ('pk', 'title', 'price','description')
+    list_editable = ('title', 'price','description')
+    list_filter=(
+    'categories',
+    )
+    search_fields=(
+    'title',
+    )
+
+admin.site.register(Product,ProductAdmin)
+admin.site.register(ProductCategory)

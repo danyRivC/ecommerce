@@ -9,7 +9,6 @@ class Product(models.Model):
     slug = models.SlugField()
     categories = models.ManyToManyField('products.ProductCategory')
 
-
     def get_absolute_url(self):
         return reverse("detail_view", kwargs={'slug':self.slug})
     def __str__(self):

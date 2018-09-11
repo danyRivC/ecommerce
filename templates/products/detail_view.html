@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'products/base.html' %}
 {% block head_content %}
 <title>{{product.title}}</title>
 {% endblock %}
@@ -35,6 +35,21 @@
               </form>
             </div>
           </div>
+          {% else %}
+          <h4 id="comments">Comentarios</h4>
+          <div class="card my-4">
+            <h5 class="card-header">Cuéntanos tu experiencia:</h5>
+            <div class="card-body">
+              <form method="post" action="{% url "create_comment" %}">
+                {% csrf_token %}
+                <div class="form-group">
+                  <textarea name="{{comment_form.content.name}}" class="form-control" rows="3"></textarea>
+                  <input type="hidden" name="{{comment_form.product.name}}" value="{{product.id}}">
+                </div>
+                <a class="btn btn-success btn-lg" href="{% url "login" %}">Inicia Sesión para Comentar</a>
+              </form>
+            </div>
+          </div>
           {% endif %}
 
           {% for comment in product.comments.all reversed %}
@@ -58,20 +73,7 @@
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
 
-          <!-- Search Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Buscas algo en especial?</h5>
-            <div class="card-body">
-              <div class="input-group">
-                <form class="" action="" method="GET">
-                  <input name="query" type="text" class="form-control" placeholder="Buscar">
-                  <button type="submit">Buscar</button>
-                  <span class="input-group-btn">
-                  </span>
-                </form>
-              </div>
-            </div>
-          </div>
+
           <div class="card my-4">
             <h5 class="card-header">Categorías</h5>
             <div class="card-body">
@@ -87,14 +89,26 @@
 
             </div>
           </div>
+          {% if request.user.is_authenticated %}
 
+          <div class="card my-4">
+
+            <h5 class="card-header">Precio</h5>
+            <div class="card-body">
+              <p>Solo! ${{product.price}}</p>
+              <a href="{% url "buy" slug=product.slug %}"><button type="button" class="btn-success btn ">Comprar</button></a>
+
+            </div>
+          </div>
+          {% else %}
           <div class="card my-4">
             <h5 class="card-header">Precio</h5>
             <div class="card-body">
               <p>Solo! ${{product.price}}</p>
-              <a href="#"><button type="button" class="btn-success btn ">Comprar</button></a>
+              <a href="{% url "login" %}">Inicia Sesion Para Comprar</button></a>
             </div>
           </div>
+          {% endif %}
 
         </div>
 

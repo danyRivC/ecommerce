@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#search" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand" href="{% url 'home' %}">Compusur</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home_product' %}">Productos</a>
+      </li>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Categorias
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="{% url 'categories' category='Computador' %}">Computador</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </li>
+      <li class="nav-item activate">
+        <a class="nav-link" href="{% url 'contacts' %}">Contactanos</a>
+      </li>
+      {% if request.user.is_authenticated %}
+      <li class="nav-item active">
+        <span class="nav-link">Hola {{request.user.first_name}}</span>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link fas fa-sign-out-alt" href="{% url 'logout' %}"></a>
+      </li>
+      {%else%}
+      <li class="nav-item activate">
+        <a class="nav-link" href="{% url 'signup' %}">Registrarse</a>
+      </li>
+      <li class="nav-item activate">
+        <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
+      </li>
+      {%endif%}
+    </ul>
+    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_product' query='query'%}" id="search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="query">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+  </div>
+
+
+
+
+
+
+
+</nav>

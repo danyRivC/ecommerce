@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'products.apps.ProductsConfig',
     'comments.apps.CommentsConfig',
+    'contacts.apps.ContactsConfig',
+    
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,7 @@ STATICFILES_FINDERS=[
     ]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+STRIPE_API_KEY = 'sk_test_ejRGDsDDJ3urcOCrI6nwAEOM'
+STRIPE_PUBLIC_API_KEY = 'pk_test_zTdZGMyrqMbvI4VxHXPqb1Dl'
+LOGIN_URL = '/login'

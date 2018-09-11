@@ -1,12 +1,19 @@
-{% extends "base.html" %}
+{% extends "products/base.html" %}
 {% block head_content %}
 <title>Home</title>
 {% endblock %}
+{% load static %}
 {% block content %}
     <div class="container" id="containerPrincipal" >
-            <h1 class="my-4">Nuestros Productos</h1>
-            {% for product in products %}
 
+            <h1 class="my-4">Nuestros Productos</h1>
+            {% if error %}
+              <div class="alert alert-danger" role="alert">
+                <h2 >{{error}}</h2>
+              </div>
+
+            {% endif %}
+            {% for product in products %}
             {% if forloop.counter0 != 0 and forloop.counter0|divisibleby:"3" %}
             </div>
             {% endif %}
@@ -24,7 +31,6 @@
                 </div>
               </div>
             </div>
-
             {% endfor %}
             </div>
 {% endblock %}

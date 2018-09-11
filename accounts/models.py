@@ -8,6 +8,6 @@ class Profile(models.Model):
     picture = models.ImageField(upload_to='accounts/pictures',
                                 blank= True,
                                 null = True)
+    
     created = models.DateTimeField(auto_now_add = True)
     modified = models.DateTimeField(auto_now = True)
-    

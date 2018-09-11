@@ -1,0 +1,14 @@
+{% extends 'accounts/base.html' %}
+{% block head_content %}
+<title>Buy Succes</title>
+{% endblock %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <h2 class="mt-5">¡¡El pago fue exitoso, Gracias por tu compra !!</h2>
+  <h4>Acabas de comprar {{title}} a un precio de ${{price}}</h4>
+  <p>Sigue navegando en nuestra página</p>
+  <a href="{% url 'home_product' %}" class="btn btn-primary btn-lg">Productos</a>
+  <a href="{% url 'contacts' %}" class="btn btn-success btn-lg">Contactanos</a>
+</div>
+{% endblock %}

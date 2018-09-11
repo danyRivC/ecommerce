@@ -1,5 +1,38 @@
+{% load static %}
 .far, .fa, .fas {
   font-size: 135%;
   margin-left: 5px;
 
+}
+.bienvenida{
+  background: url("../img/Background.jpg") no-repeat center top;
+  color: white;
+  background-size: cover;
+  height: 100vh;
+}
+.btn-block + .btn-block {
+    margin-top: .5rem !important;
+  }
+
+.footer{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.down{
+  display: inline-block;
+  font-size: 4rem;
+  color: white;
+  animation: fleca-animada 2s ease-in-out infinite;
+}
+@@keyframes flecha-animada {
+  from{
+    transform: translateY(0);
+
+  }
+  50%{
+    transform: translateY(6px);
+  }
+  to{
+    transform: translateY(0);
+  }
 }
