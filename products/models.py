@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
+
 class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -30,4 +32,11 @@ class ProductCategory(models.Model):
     slug = models.SlugField()
     def __str__(self):
         return self.name
-# Create your models here.
+
+class ProductSale(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=20)
+    direction = models.CharField(max_length=255)
+    product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
+    def __str__(self):
+        return self.direction

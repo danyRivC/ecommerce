@@ -1,8 +1,43 @@
 {% extends 'accounts/base.html' %}
-{% block 'head_content' %}
+{% block head_content %}
 <title>Contactenos</title>
 {% endblock %}
 {% load static %}
 {% block content %}
-<h1>Contactenos</h1>
+
+<h1 class="title-message">Contactanos</h1>
+<br>
+<div class="container">
+  <div class="row justify-content-md-center">
+
+      <form class="" action="{% url 'contacts' %}" method="POST">
+        {% csrf_token %}
+        {% if forms.errors %}
+        <p>{{forms.errors}}</p>
+        {% endif%}
+        <div class="form-group">
+          <h4>Escribe el titulo del mensaje</h4>
+          <input type="text" name="title" placeholder="Titulo" class="form-control">
+        </div>
+        <div class="form-group">
+          <h4>Escribe Tu mensaje</h4>
+          <textarea name="description" rows="8" cols="80" class="form-control"></textarea>
+
+        </div>
+        <div class="form-group">
+          <h4>Escribe un numero de telefono para contactarnos contigo </h4>
+          <input type="text" name="phone_number" placeholder="Numero de Telefono" class="form-control">
+        </div>
+        <div class="form-group">
+          <h4>Escribe tu email</h4>
+          <input type="email" name="email_contact" placeholder="Email" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-secondary btn-block mt-5 message">Enviar mensaje</button>
+      </form>
+
+
+
+  </div>
+
+</div>
 {% endblock %}

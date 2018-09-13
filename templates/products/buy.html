@@ -37,7 +37,14 @@
     </div>
     <div id="card-errors" role="alert"></div>
     <br>
-    
+    <h3>Datos de entrega</h3>
+    <div class="" id="card-element">
+
+      <input type="text" name="phone_number" placeholder="Numero de Telefono" required= True class="form-control">
+      <br>
+      <input type="text" name="direction" placeholder="Direccion" required = True class="form-control">
+    </div>
+    <br>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -59,7 +66,7 @@
     </div>
 
     <button type="submit" class="btn btn-success btn-lg" data-toggle="modal"
-    data-target="#exampleModal">Buy</button>
+    data-target="#exampleModal">Comprar</button>
   </form>
 
   </div>
@@ -136,4 +143,5 @@ form.addEventListener('submit', function(event) {
   });
 });
 </script>
+
 {% endblock content %}

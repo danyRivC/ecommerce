@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, DetailView
-from products.models import Product, ProductImage, ProductCategory
+from products.models import Product, ProductImage, ProductCategory, ProductSale
 from comments.forms import CommentForm
 from django.views.generic.list import ListView
 import stripe
@@ -45,6 +45,13 @@ class ProductBuyView(DetailView):
             statement_descriptor = "cobro al usuario {}".format(request.user.username),
             source = token
         )
+        product_sale = product
+
+        phone_number = request.POST['phone_number']
+        direction = request.POST['direction']
+        user = request.user
+        sale = ProductSale(user = user, phone_number = phone_number, direction= direction, product = product)
+        sale.save()
         return render(request,'products/succes.html', {'title':product.title, 'price':product.price})
 
 def searchProduct(request, query):

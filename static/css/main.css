@@ -1,4 +1,10 @@
 {% load static %}
+.message{
+  color: red;
+}
+.title-message{
+  align-content: center;
+}
 .far, .fa, .fas {
   font-size: 135%;
   margin-left: 5px;
