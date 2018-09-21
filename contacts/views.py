@@ -1,24 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from contacts.forms import ContactForm
-from contacts.models import ContactModel
+from products.models import Product
+
 def contacts(request):
 
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
-            data = form.cleaned_data
-            title = data['title']
-            message = data['description']
-            email_contact= data['email_contact']
-            phone_number = data['phone_number']
-            contact = ContactModel(title=title,
-                                   message=message,
-                                   email_contact= email_contact,
-                                   phone_number=phone_number,
-                                   )
-            contact.save()
+            form.save()
+            success='Pregunta enviada, Ponto te responderemos'
+            products = Product.objects.all()
+            
 
-
-
-    return render(request,'contacts/contacts.html')
+    return render(request=request,
+                  template_name='contacts/contacts.html')

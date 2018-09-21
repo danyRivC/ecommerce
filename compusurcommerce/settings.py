@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'products.apps.ProductsConfig',
     'comments.apps.CommentsConfig',
     'contacts.apps.ContactsConfig',
-    
+
 ]
 
 MIDDLEWARE = [

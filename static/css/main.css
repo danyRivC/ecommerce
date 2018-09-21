@@ -1,4 +1,11 @@
 {% load static %}
+.options-home{
+  flex: 1 1 auto;
+}
+.text-head{
+  display: flex;
+  flex-direction: column;
+}
 .message{
   color: red;
 }
@@ -14,7 +21,8 @@
   background: url("../img/Background.jpg") no-repeat center top;
   color: white;
   background-size: cover;
-  height: 100vh;
+  height: 91vh;
+
 }
 .btn-block + .btn-block {
     margin-top: .5rem !important;
@@ -28,17 +36,25 @@
   display: inline-block;
   font-size: 4rem;
   color: white;
-  animation: fleca-animada 2s ease-in-out infinite;
+  animation: flecha-animada 2s ease-in-out infinite;
+
 }
-@@keyframes flecha-animada {
+
+@keyframes flecha-animada{
   from{
     transform: translateY(0);
-
-  }
+    }
   50%{
     transform: translateY(6px);
-  }
+    }
   to{
     transform: translateY(0);
-  }
+    }
+}
+
+.info-content{
+  background: #069962;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: white;
 }

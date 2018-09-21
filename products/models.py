@@ -34,7 +34,7 @@ class ProductCategory(models.Model):
         return self.name
 
 class ProductSale(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20)
     direction = models.CharField(max_length=255)
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE)

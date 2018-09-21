@@ -3,28 +3,39 @@
 <title>Home</title>
 {% endblock %}
 {% block content %}
-<h1 class="my-4">{{category}}</h1>
-    <div class="d-flex flex-row bd-highlight mb-3" id="containerPrincipal" >
+<div class="container" id="containerPrincipal" >
+
+        <h1 class="my-4">Nuestros Productos</h1>
+        {% if error %}
+          <div class="alert alert-danger" role="alert">
+            <h2 >{{error}}</h2>
+          </div>
+
+        {% endif %}
+        {% for product in products %}
+        {% for i in product.categories.all %}
+        {% if i.name == category %}
+        {% if forloop.counter0 != 0 and forloop.counter0|divisibleby:"3" %}
+        </div>
+        {% endif %}
+        {% if forloop.counter0|divisibleby:"3" %}
+        <div class="row" style="padding-top: 17px" >
+        {% endif %}
+        <div class="col-lg-4 col-sm-6 portfolio-item" style="padding-top: 17px">
+          <div class="card h-100">
+            <a href="{{product.get_absolute_url}}"><img class="card-img-top" src="{{product.images.first.image.url}}" alt="{{product.images.first.image.url}}"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="{{product.get_absolute_url}}">{{product.title}}</a>
+              </h4>
+              <p class="card-text">{{product.description}}</p>
+            </div>
+          </div>
+        </div>
+        {%endif%}
+        {% endfor %}
+        {% endfor %}
+        </div>
 
 
-            {% for product in products %}
-            {% for i in product.categories.all %}
-            {% if i.name == category %}
-            <div class="p-2 bd-highlight">
-              <div class="col-lg-4 col-sm-6 portfolio-item" style="padding-top: 17px">
-                <div class="card h-100">
-                  <a href="{{product.get_absolute_url}}"><img class="card-img-top" src="{{product.images.first.image.url}}" alt="{{product.images.first.image.url}}"></a>
-                  <div class="card-body">
-                    <h4 class="card-title">
-                      <a href="{{product.get_absolute_url}}">{{product.title}}</a>
-                    </h4>
-                    <p class="card-text">{{product.description}}</p>
-                  </div>
-                </div>
-              </div>
-            {% endif %}
-            {% endfor %}
-            {% endfor %}
-            </div>
-            </div>
 {% endblock %}

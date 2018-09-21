@@ -5,11 +5,13 @@
 {% load static%}
 {% block content %}
 
-<div class=" container text-xs-center" style="height: 50%; text-align: center;">
+
+<div class=" container text-head " style="height: 50%; text-align: center;">
+  <div class="options-home">
   <h1 class="display-3">Compusur Commerce</h1>
   <div class="container" style="margin-top:20px;">
   <h4>Tenemos los mejores productos del mercado al mejor precio </h2>
-    <div class="options-home">
+    <div class="">
     {% if request.user.is_authenticated %}
     <div class="container">
      <a href="{% url 'home_product'%}" class="btn btn-primary">Productos</a>
@@ -22,25 +24,30 @@
     </div>
     {% endif %}
     </div>
-    <section>
-      <a href="#" class="fas fa-angle-down down"></a>
-    </section>
+  </div>
+
+  </div>
+  <div class="container">
+    <a href="#information"> <i class="fas fa-angle-down down "id="flecha"></i> </a>
   </div>
 </div>
 {% endblock %}
 {% block information %}
-<section>
-<div class="">
-  <div class="">
-    Facilidad en tu compra
-  </div>
-  <div class="">
-    La mejor ecommerce del pais
-  </div>
-  <div class="">
-    entrega segura a la puerta de tu casa
+<section class="info-content " id="information">
 
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      <h2 class="h3 text-center text-md-left font-weight-bold ">Nuestra Empresa</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="col-xs-12 col-md-4 text-xs-center">
+      <img src="{% static 'img/shopping-cart.png' %}" alt="">
+    </div>
   </div>
+
+
 </div>
 </section>
 

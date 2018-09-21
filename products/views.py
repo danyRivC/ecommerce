@@ -41,8 +41,8 @@ class ProductBuyView(DetailView):
         charge = stripe.Charge.create(
             amount = product.price * 100,
             currency = 'usd',
-            description = 'cobro por {} del usuario {}'.format(product.title,request.user.first_name),
-            statement_descriptor = "cobro al usuario {}".format(request.user.username),
+            description = 'cobro de{} a {}'.format(product.title,request.user.first_name),
+            statement_descriptor = "cobro a {}".format(request.user.username),
             source = token
         )
         product_sale = product
@@ -52,7 +52,7 @@ class ProductBuyView(DetailView):
         user = request.user
         sale = ProductSale(user = user, phone_number = phone_number, direction= direction, product = product)
         sale.save()
-        return render(request,'products/succes.html', {'title':product.title, 'price':product.price})
+        return render(request=request, template_name='products/succes.html', context={'title':product.title, 'price':product.price})
 
 def searchProduct(request, query):
     query = request.GET['query']
